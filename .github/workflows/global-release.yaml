@@ -271,21 +271,31 @@ jobs:
         id: install
 
       # Bump chart version
-      - name: Bump serving app version
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "^appVersion:"
-          replace: "appVersion: ${{ env.VERSION }}"
-          include: "helm/serving/Chart.yaml"
-          regexp: true
+      # - name: Bump serving app version
+      #   uses: jacobtomlinson/gha-find-replace@v2
+      #   with:
+      #     find: "^appVersion:"
+      #     replace: "appVersion: ${{ env.VERSION }}"
+      #     include: "helm/serving/Chart.yaml"
+      #     regexp: true
  
-      - name: Bump serving chart version
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "^version:"
-          replace: "version: ${{ env.VERSION }}"
-          include: "helm/serving/Chart.yaml"
-          regexp: true
+      # - name: Bump serving chart version
+      #   uses: jacobtomlinson/gha-find-replace@v2
+      #   with:
+      #     find: "^version:"
+      #     replace: "version: ${{ env.VERSION }}"
+      #     include: "helm/serving/Chart.yaml"
+      #     regexp: true
+
+
+      - name: Update Umbrella helm chart version
+        env:
+          sedVersion: 's/^version/version: ${{ env.VERSION }}/g'
+          sedAppVersion: 's/^appVersion/appVersion: ${{ env.VERSION }}/g'
+        run: |
+          sed -i 'helm/serving/Chart.yaml' -E -e $sedVersion helm/serving/Chart.yaml
+          sed -i 'helm/serving/Chart.yaml' -E -e $sedAppVersion helm/serving/Chart.yaml
+
 
       - name: debug chart
         run: cat helm/serving/Chart.yaml
