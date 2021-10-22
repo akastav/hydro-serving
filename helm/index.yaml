@@ -234,3 +234,12 @@ entries:
     - https://github.com/Hydrospheredata/hydro-serving/releases/download/3.0.0/serving-3.0.0.tgz
     version: 3.0.0
     appVerison: 3.0.0
+  - apiVersion: v2
+    created: 2021-10-22T16:55:49Z
+    description: Hydrosphere Serving is a cluster for deploying and versioning your machine learning models in production
+    digest: 9db65c2f3cf9a9bcf53c32f5fa7cbaa5f5f33d02678a569bf007205185753edf
+    name: serving
+    urls:
+    - https://github.com/Hydrospheredata/hydro-serving/releases/download/3.0.1/serving-3.0.1.tgz
+    version: 3.0.1
+    appVersion: 3.0.1
