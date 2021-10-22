@@ -274,14 +274,14 @@ jobs:
       - name: Bump serving app version
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "appVersion.*"
+          find: "appVersion"
           replace: "appVersion: \"${{ env.VERSION }}\""
           include: "./helm/serving/Chart.yaml"
  
       - name: Bump serving chart version
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "version.*"
+          find: "version"
           replace: "version: \"${{ env.VERSION }}\""
           include: "./helm/serving/Chart.yaml"
 
