@@ -290,8 +290,8 @@ jobs:
 
       - name: Update Umbrella helm chart version
         env:
-          sedVersion: 's|^version|version: ${{ env.VERSION }}|g'
-          sedAppVersion: 's|^appVersion|appVersion: ${{ env.VERSION }}|g'
+          sedVersion: 's/^version/version: ${{ env.VERSION }}/g'
+          sedAppVersion: 's/^appVersion/appVersion: ${{ env.VERSION }}/g'
         run: |
           sed -i -e "$sedVersion" helm/serving/Chart.yaml
           sed -i -e "$sedAppVersion" helm/serving/Chart.yaml
